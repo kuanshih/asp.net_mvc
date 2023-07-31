@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "querytoView"; //title
+    string photo = "anonymous.jpg";// 先設一個string 是photo的位置名稱
+    if (ViewBag.kk !=null)//如果ViewBag.kk是null那就會是上面的無名照片，
+                          //如果有資料就會根據是哪個做改變，這邊因為我之前照片的名稱是用名字.jpg，所以下面才是這樣寫法，不然應該要用fId
+        {
+        photo = ViewBag.kk.fName + ".jpg";
+            }
+}
+
+<h2>查詢客戶資料</h2>
+
+
+    <img src="~/images/@photo" / width="240" height="180" />
+    <br />
+    @{
+        if (ViewBag.kk ==null)
+        {
+            <h3>
+                查無資料
+            </h3>
+        }
+        else
+        {
+            <p>
+            <h3>@ViewBag.kk.fName</h3>
+
+            @ViewBag.kk.fPhone/@ViewBag.kk.fEmail
+        </p>
+                }
+
+    }
+
+
+

@@ -1,0 +1,34 @@
+﻿@model prjMVCDemo.Models.CCustomer  
+@{//上面小寫@model是指定namespace class
+
+    ViewBag.Title = "BindingtoView";
+    string photo = "anonymous.jpg";// 先設一個string 是photo的位置名稱
+    if (Model != null)//如果ViewBag.kk是null那就會是上面的無名照片，
+                           //如果有資料就會根據是哪個做改變，這邊因為我之前照片的名稱是用名字.jpg，所以下面才是這樣寫法，不然應該要用fId
+    {
+        photo = Model.fName + ".jpg"; //這邊大寫Model就會等剛剛在AController 放到View(x) 的x 而x 在此範例中為Models 中的CCustomer類別
+    }
+}
+
+<h2>繫結客戶資料</h2>
+
+
+<img src="~/images/@photo" / width="240" height="180" />
+<br />
+@{
+    if (Model == null)
+    {
+        <h3>
+            查無資料
+        </h3>
+    }
+    else
+    {
+        <p>
+            <h3>@Model.fName</h3>
+
+            @Model.fPhone/@Model.fEmail
+        </p>
+    }
+
+}

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<prjMVCDemo.Models.CShoppingCartItem>
+
+@{
+    ViewBag.Title = "CartView";
+}
+
+<h2>你的購物車</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.小計)
+        </th>
+        <th></th>
+    </tr>
+
+@{int count = 0;
+    decimal sum = 0;
+    decimal tax = 0;
+    decimal pay = 0;
+    foreach (var item in Model)
+    {
+        count++;
+        sum += item.小計;
+    <tr>
+        <td>
+            @count;
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product.fName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.小計)
+        </td>
+        <td>
+            @Html.ActionLink("修改數量", "Edit","CShoppingCart", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-secondary" }) |
+            @Html.ActionLink("取消", "Delete","CShoppingCart", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-secondary" })
+        </td>
+    </tr>
+    }
+    tax = sum * 0.05M;
+    pay = sum + tax;
+    }
+
+</table>
+<li>交易金額: @sum.ToString("###,###,##0")</li>
+<li>稅        額: @tax.ToString("###,###,##0")</li>
+<li>應付金額: @pay.ToString("###,###,##0")</li>

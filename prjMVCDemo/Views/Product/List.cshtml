@@ -1,0 +1,77 @@
+﻿@model IEnumerable<prjMVCDemo.tProduct>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>產品資料一覽表</h2>
+@using (Html.BeginForm())
+{
+    
+        @:關鍵字 @Html.TextBox("txtKeyword")<input type="submit" value="查詢" />
+    
+}
+<p>
+    <br/>
+    @Html.ActionLink("新增產品", "Create","Product",null, new { @class="btn btn-secondary"})
+    <br/>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+           編輯
+        </th>
+        <th>
+            刪除
+        </th>
+        <th></th>
+    </tr>
+
+    @{int count = 0;
+        foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("修改", "Edit", "Product", new { id = item.fId }, new { @class = "btn btn-light" }) 
+                    
+                </td>
+                <td>
+                    @Html.ActionLink("刪除", "Delete", "Product", new { id = item.fId }, new { onclick = "return confirm('確定要刪除嗎?')", @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

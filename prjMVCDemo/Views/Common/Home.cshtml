@@ -1,0 +1,13 @@
+﻿@using prjMVCDemo.Models
+@{
+    ViewBag.Title = "Home";
+    string user = "";
+    if (Session[CDictionary.SK_LOGINED_USER] != null)
+    {
+        user = (Session[CDictionary.SK_LOGINED_USER] as CCustomer).fName;
+    }
+}
+
+<h2>歡迎 @user  登入系統</h2>
+
+

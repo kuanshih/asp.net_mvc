@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新增庫戶作業</h2>
+<form method="post" action="~/Customer/Save">
+    <p>
+        姓名
+        <br />
+        <input type="text" name="txtName" />
+    </p>
+    <p>
+        電話
+        <br />
+        <input type="text" name="txtPhone" />
+    </p>
+    <p>
+        信箱
+        <br />
+        <input type="text" name="txtEmail" />
+    </p>
+    <p>
+        地址
+        <br />
+        <input type="text" name="txtAddress" />
+    </p>
+    <p>
+        密碼
+        <br />
+        <input type="text" name="txtPassword" />
+    </p>
+    <p>
+        <input type="submit"value="送出並新增" />
+    </p>
+</form>
+

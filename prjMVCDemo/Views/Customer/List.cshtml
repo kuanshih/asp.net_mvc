@@ -1,0 +1,49 @@
+﻿@using prjMVCDemo.Models @*用@後面using ,下一行用小寫model指定資料類型*@
+@model List<CCustomer>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>客戶資料一覽表</h2>
+<form method="post">
+    關鍵字 <input type="text" name="txtKeyword"/>
+    <input type="submit" value="查詢" />
+</form>
+<div>
+    <br />
+    <a href="~/Customer/Create" class="btn btn-secondary">新增客戶</a>  @*文字超連結*@
+    <br/>
+</div>
+<div>
+    <table class="table table-hover">
+        <tr>
+            <td>序</td>
+            <td>姓名</td>
+            <td>電話</td>
+            <td>信箱</td>
+            <td>地址</td>
+            <td>密碼</td>
+            <td>編輯</td>
+            <td>刪除</td>
+        </tr>
+        @{
+            int count = 0;
+            foreach (CCustomer t in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@t.fName</td>
+                    <td>@t.fPhone</td>
+                    <td>@t.fEmail</td>
+                    <td>@t.fAddress</td>
+                    <td>@t.fPassword</td>
+                    <td>@Html.ActionLink("編輯", "Edit", "Customer", new { id = t.fId }, new { @class = "btn btn-light" })</td>
+                    <td>@Html.ActionLink("刪除", "Delete", "Customer", new { id = t.fId }, new { onclick = "return confirm('確定要刪除嗎?')" , @class = "btn btn-warning" })</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+

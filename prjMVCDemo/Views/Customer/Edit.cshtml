@@ -1,0 +1,39 @@
+﻿@model prjMVCDemo.Models.CCustomer
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改客戶資料</h2>
+<form method="post">
+    <p>
+        <input type="hidden" name="fId" value="@Model.fId" />
+        姓名
+        <br />
+        <input type="text" name="fName" value="@Model.fName"/>
+    </p>
+    <p>
+        電話
+        <br />
+        <input type="text" name="fPhone" value="@Model.fPhone" />
+    </p>
+    <p>
+        信箱
+        <br />
+        <input type="text" name="fEmail" value="@Model.fEmail"/>
+    </p>
+    <p>
+        地址
+        <br />
+        <input type="text" name="fAddress"value="@Model.fAddress" />
+    </p>
+    <p>
+        密碼
+        <br />
+        <input type="text" name="fPassword"value="@Model.fPassword" />
+    </p>
+    <p>
+        <input type="submit" value="送出並修改", class="btn btn-secondary"  />
+    </p>
+</form>
+
