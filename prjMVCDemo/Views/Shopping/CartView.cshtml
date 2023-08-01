@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<prjMVCDemo.Models.CShoppingCartItem>
 
+
 @{
     ViewBag.Title = "CartView";
 }
@@ -15,7 +16,7 @@
             序
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.product.fName)
+                @Html.DisplayNameFor(model => model.product.fName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.count)
@@ -39,9 +40,11 @@
         sum += item.小計;
     <tr>
         <td>
-            @count;
+            @count
         </td>
         <td>
+            <img src="~/images/@item.product.fImagePath" width="250" height="160"/>
+            <br />
             @Html.DisplayFor(modelItem => item.product.fName)
         </td>
         <td>

@@ -12,19 +12,21 @@ namespace prjMVCDemo
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     public partial class tProduct
     {
         public int fId { get; set; }
-        [Required(ErrorMessage ="品名不可為空白")]
-        [DisplayName("品名")]
+        [DisplayName("產品名稱")]
         public string fName { get; set; }
-        [DisplayName("數量")]
+        [DisplayName("產品數量")]
         public Nullable<int> fQty { get; set; }
-        [DisplayName("成本")]
+        [DisplayName("產品成本")]
         public Nullable<decimal> fCost { get; set; }
-        [DisplayName("單價")]
+        [DisplayName("產品價格")]
         public Nullable<decimal> fPrice { get; set; }
+        public string fImagePath { get; set; }
+        [DisplayName("照片")]
+        public HttpPostedFileBase photo {  get; set; }
     }
 }

@@ -14,6 +14,7 @@
           <Property Name="fQty" Type="int" />
           <Property Name="fCost" Type="money" />
           <Property Name="fPrice" Type="money" />
+          <Property Name="fImagePath" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tShopingCart">
           <Key>
@@ -43,6 +44,7 @@
           <Property Name="fQty" Type="Int32" />
           <Property Name="fCost" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="fPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="dbDemoEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tProduct" EntityType="Self.tProduct" />
@@ -68,6 +70,7 @@
           <EntitySetMapping Name="tProduct">
             <EntityTypeMapping TypeName="dbDemoModel2.tProduct">
               <MappingFragment StoreEntitySet="tProduct">
+                <ScalarProperty Name="fImagePath" ColumnName="fImagePath" />
                 <ScalarProperty Name="fId" ColumnName="fId" />
                 <ScalarProperty Name="fName" ColumnName="fName" />
                 <ScalarProperty Name="fQty" ColumnName="fQty" />

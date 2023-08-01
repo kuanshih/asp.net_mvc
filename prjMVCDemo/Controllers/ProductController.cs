@@ -57,6 +57,12 @@ namespace prjMVCDemo.Controllers
             tProduct pDb = en.tProduct.FirstOrDefault(p => p.fId == pln.fId);
             if (pDb != null)
             {
+                if(pln.photo != null)
+                {
+                    string photoName =Guid.NewGuid().ToString()+".jpg";
+                    pDb.fImagePath = photoName;
+                    pln.photo.SaveAs(Server.MapPath("../../Images/" + photoName));
+                }
                 pDb.fQty = pln.fQty;
                 pDb.fName = pln.fName;
                 pDb.fCost = pln.fCost;
